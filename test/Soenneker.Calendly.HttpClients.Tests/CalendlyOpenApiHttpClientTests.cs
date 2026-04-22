@@ -1,20 +1,19 @@
 using Soenneker.Calendly.HttpClients.Abstract;
-using Soenneker.Tests.FixturedUnit;
-using Xunit;
+using Soenneker.Tests.HostedUnit;
 
 namespace Soenneker.Calendly.HttpClients.Tests;
 
-[Collection("Collection")]
-public sealed class CalendlyOpenApiHttpClientTests : FixturedUnitTest
+[ClassDataSource<Host>(Shared = SharedType.PerTestSession)]
+public sealed class CalendlyOpenApiHttpClientTests : HostedUnitTest
 {
     private readonly ICalendlyOpenApiHttpClient _httpclient;
 
-    public CalendlyOpenApiHttpClientTests(Fixture fixture, ITestOutputHelper output) : base(fixture, output)
+    public CalendlyOpenApiHttpClientTests(Host host) : base(host)
     {
         _httpclient = Resolve<ICalendlyOpenApiHttpClient>(true);
     }
 
-    [Fact]
+    [Test]
     public void Default()
     {
 
