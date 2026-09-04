@@ -11,6 +11,7 @@ using Soenneker.Utils.HttpClientCache.Abstract;
 
 namespace Soenneker.Calendly.HttpClients;
 
+/// <inheritdoc cref="ICalendlyOpenApiHttpClient" />
 public sealed class CalendlyOpenApiHttpClient : ICalendlyOpenApiHttpClient
 {
     private readonly IHttpClientCache _httpClientCache;
