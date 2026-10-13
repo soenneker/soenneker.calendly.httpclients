@@ -29,7 +29,7 @@ public sealed class CalendlyOpenApiHttpClient : ICalendlyOpenApiHttpClient
     {
         return _httpClientCache.Get(nameof(CalendlyOpenApiHttpClient), (config: _config, baseUrl: _config["Calendly:ClientBaseUrl"] ?? _prodBaseUrl), static state =>
         {
-            var apiKey = state.config.GetValueStrict<string>("Calendly:ApiKey");
+            var apiKey = state.config.GetStringStrict("Calendly:ApiKey");
             string authHeaderName = state.config["Calendly:AuthHeaderName"] ?? "Authorization";
             string authHeaderValueTemplate = state.config["Calendly:AuthHeaderValueTemplate"] ?? "Bearer {token}";
             string authHeaderValue = authHeaderValueTemplate.Replace("{token}", apiKey, StringComparison.Ordinal);
